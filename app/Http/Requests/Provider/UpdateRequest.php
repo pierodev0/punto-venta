@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:250'],
             'email' => ['required', 'email', 'max:250', 'unique:providers'],
             'ruc_number' => ['required', 'string', 'max:11', 'min:11', 'unique:providers,ruc_number,' . $this->route('provider')->id],
-            'address' => ['nullable', 'string', 'max:250','unique:providers,ruc_number,' . $this->route('provider')->id],
+            'address' => ['nullable', 'string', 'max:250','unique:providers,address,' . $this->route('provider')->id],
             'phone' => [
                 'required', 'string', 'max:9', 'min:9',
                 'unique:providers,phone,' . $this->route('provider')->id
