@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('categories',CategoryController::class);
+Route::resource('providers',ProviderController::class);
+Route::resource('products',ProductController::class);
+Route::resource('clients',ClientController::class);
+Route::resource('purchases',PurchaseController::class);
+Route::resource('sales',SaleController::class);
+
+Route::get('/prueba', function () {
+    return view('prueba');
 });
+
+
+
+Route::get('logout',function(){
+
+})->name('logout');

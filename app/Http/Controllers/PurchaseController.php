@@ -7,7 +7,7 @@ use App\Http\Requests\Purchase\UpdateRequest;
 use App\Models\Provider;
 use App\Models\Purchase;
 
-class CategoryController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
