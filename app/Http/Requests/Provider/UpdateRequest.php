@@ -22,10 +22,10 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:250'],
-            'email' => ['required', 'email', 'max:250', 'unique:providers'],
+            'name' => ['required', 'string', 'max:250', 'unique:providers,name,' . $this->route('provider')->id],
+            'email' => ['required', 'email', 'max:250', 'unique:providers,email,' . $this->route('provider')->id],
             'ruc_number' => ['required', 'string', 'max:11', 'min:11', 'unique:providers,ruc_number,' . $this->route('provider')->id],
-            'address' => ['nullable', 'string', 'max:250','unique:providers,address,' . $this->route('provider')->id],
+            'address' => ['nullable', 'string', 'max:250'],
             'phone' => [
                 'required', 'string', 'max:9', 'min:9',
                 'unique:providers,phone,' . $this->route('provider')->id
