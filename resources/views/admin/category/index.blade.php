@@ -41,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($categories as $category)
+                                @foreach ($categories as $category)
                                 <tr>
                                     <th scope="row">{{$category->id}}</th>                                   
                                     <td><a href="{{ route('categories.show',$category) }}">{{$category->name}}</a></td>
@@ -65,7 +65,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
