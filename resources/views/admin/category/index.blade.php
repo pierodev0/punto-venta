@@ -58,7 +58,7 @@
                                         </a>
                                         
                                         <button class="btn btn-outline-danger delete-confirm"
-                                        type="button" onclick="confirmDelete('delete-item_{{$category->id}}')" title="Eliminar">
+                                        type="submit"  title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
 

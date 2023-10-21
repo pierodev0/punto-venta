@@ -39,7 +39,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('admin.category.show',compact($category));
+        return view('admin.category.show',compact('category'));
     }
 
     /**
@@ -47,7 +47,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.category.edit',compact($category));
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
