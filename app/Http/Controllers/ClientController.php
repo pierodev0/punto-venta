@@ -39,7 +39,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view('admin.client.show',compact($client));
+        return view('admin.client.show',compact('client'));
     }
 
     /**
@@ -47,7 +47,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('admin.client.edit',compact($client));
+        return view('admin.client.edit',compact('client'));
     }
 
     /**

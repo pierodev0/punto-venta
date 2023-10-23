@@ -16,8 +16,15 @@ class ClientFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create();
+
         return [
-            //
+            'name' => $faker->name,
+            'dni' => $faker->unique()->numerify('#######'), // Genera un número de 8 dígitos
+            'ruc' => $faker->unique()->numerify('###########'), // Genera un número de 11 dígitos
+            'address' => $faker->address, // Puede generar o no una dirección
+            'phone' => $faker->unique()->numerify('9########'), // Genera un número de 9 dígitos
+            'email' => $faker->unique()->email, 
         ];
     }
 }

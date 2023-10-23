@@ -64,7 +64,7 @@
           </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" >
+          <a class="nav-link" href="{{ route('clients.index') }}">
               <i class="fas fa-users menu-icon"></i>
               <span class="menu-title">Clientes</span>
           </a>
