@@ -45,8 +45,8 @@ class ProductController extends Controller
         }
 
         $product = Product::create($data);
-
         $product->update(["code"=>$product->id]);
+        
         return redirect()->route('products.index');
     }
 
@@ -65,7 +65,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.product.show',compact('categories','providers'));
+        return view('admin.product.edit',compact('product','categories','providers'));
     }
 
     /**
@@ -73,7 +73,18 @@ class ProductController extends Controller
      */
     public function update(UpdateRequest $request, Product $product)
     {
-        $product->update($request->all());
+
+        $data = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $image_name = time()."." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $image_name);
+            $data['image'] = "$image_name";
+        }
+
+        $product->update($data);
+
         return redirect()->route('products.index');
     }
 
