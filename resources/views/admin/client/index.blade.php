@@ -10,16 +10,16 @@
 @section('content')
 <div class="content-wrapper">
     <div class="page-header">
-      <div class="card">
-        <div class="d-flex justify-content-between">
-            <h4 class="card-title"></h4>
-            <div class="btn-group">
-                <a href="{{route('clients.create')}}" type="button" class="btn btn-info ">
-                    <i class="fas fa-plus"></i> Nuevo
-                </a>
+        <div class="card">
+            <div class="d-flex justify-content-between">
+                <h4 class="card-title"></h4>
+                <div class="btn-group">
+                    <a href="{{route('clients.create')}}" type="button" class="btn btn-info ">
+                        <i class="fas fa-plus"></i> Nuevo
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>      
+        </div>      
         <h3 class="page-title">
             Clientes
         </h3>

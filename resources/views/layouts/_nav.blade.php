@@ -40,7 +40,7 @@
           </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" >
+          <a class="nav-link" href="{{ route('purchases.index') }}">
               <i class="fas fa-cart-plus menu-icon"></i>
               <span class="menu-title">Compras</span>
           </a>
