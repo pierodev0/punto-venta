@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->string('code')->unique();
+            $table->string('code')->unique()->nullable();
             $table->string('name')->unique();
 
-            $table->integer('stock');
-            $table->string('image');
+            $table->integer('stock')->default(0);
+            $table->string('image')->nullable();
 
             $table->decimal('sell_price',12,2);
             $table->enum('status',['ACTIVE','DEACTIVATED'])->default('ACTIVE');
@@ -26,8 +26,8 @@ return new class extends Migration
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('category_id');
             
-            $table->foreign('provider_id')->references('id')->on('providers');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

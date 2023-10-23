@@ -24,27 +24,28 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('providers.store') }}" method="POST">
+                    <form action="{{ route('providers.store') }}" method="POST" novalidate>
+                      <x-errors/>
                         @csrf                     
                         <div class="form-group">
                           <label for="name">Nombre</label>
-                          <input type="text" class="form-control" name="name" id="name" required>
+                          <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" required>
                         </div>
                         <div class="form-group">
                           <label for="email">Correo Electronico</label>
-                          <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                          <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="ejemplo@gmail.com" required>
                         </div>
                         <div class="form-group">
                           <label for="ruc_number">Numero de RUC</label>
-                          <input type="number" min="1000000000" class="form-control" name="ruc_number" id="ruc_number" required>
+                          <input type="number" min="1000000000" class="form-control" name="ruc_number" value="{{ old('ruc_number') }}" id="ruc_number" required>
                         </div>
                         <div class="form-group">
                           <label for="address">Direccion</label>
-                          <input type="text" class="form-control" name="address" id="address" required>
+                          <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" required>
                         </div>
                         <div class="form-group">
                           <label for="phone">Numero de Contacto</label>
-                          <input type="tel" class="form-control" name="phone" id="phone" required>
+                          <input type="tel" class="form-control" name="phone" id="phone" value="{{ old('phone') }}" required>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                         <a href="{{route('providers.index')}}" class="btn btn-light">

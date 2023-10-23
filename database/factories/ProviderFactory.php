@@ -16,8 +16,14 @@ class ProviderFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = \Faker\Factory::create();
+
         return [
-            //
+            'name' => $faker->name,
+            'email' => $faker->unique()->safeEmail,
+            'ruc_number' => $faker->unique()->numerify('###########'),
+            'address' => $faker->address,
+            'phone' => $faker->unique()->numerify('9########'),
         ];
     }
 }

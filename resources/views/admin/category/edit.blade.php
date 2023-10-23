@@ -26,7 +26,8 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('categories.update',$category) }}" method="POST">
+                    <form action="{{ route('categories.update',$category) }}" method="POST" novalidate>
+                        <x-errors/>
                         @method('PUT')
                         @csrf  
                         <div class="form-group">

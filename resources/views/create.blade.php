@@ -24,7 +24,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('categories.store') }}" method="POST">
+                    <form action="{{ route('categories.store') }}" method="POST" novalidate>
                         @csrf
                     <div class="form-group">
                       <label for="type">Modulo</label>

@@ -34,7 +34,19 @@ class ProductController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Product::create($request->all());
+
+        $data = $request->all();
+
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $image_name = time().$image->getClientOriginalName(). "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $image_name);
+            $data['image'] = "$image_name";
+        }
+
+        $product = Product::create($data);
+
+        $product->update(["code"=>$product->id]);
         return redirect()->route('products.index');
     }
 

@@ -26,9 +26,9 @@ Route::resource('clients',ClientController::class);
 Route::resource('purchases',PurchaseController::class);
 Route::resource('sales',SaleController::class);
 
-Route::get('/prueba', function () {
+Route::get('/home', function () {
     return view('prueba');
-});
+})->name('home');
 
 
 

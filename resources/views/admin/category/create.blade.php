@@ -24,7 +24,8 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('categories.store') }}" method="POST">
+                    <x-errors/>
+                    <form action="{{ route('categories.store') }}" method="POST" novalidate>
                         @csrf                     
                         @include('admin.category._form')
                         <button type="submit" class="btn btn-primary mr-2">Registrar</button>
