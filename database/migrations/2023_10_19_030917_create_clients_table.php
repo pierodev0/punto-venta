@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('dni')->unique();
             $table->string('ruc')->unique()->nullable();
             $table->string('address')->nullable();
-            $table->string('phone')->unique();
+            $table->string('phone')->unique()->nullable();
             $table->string('email')->unique()->nullable();
 
             $table->timestamps();
