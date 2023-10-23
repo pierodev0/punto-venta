@@ -7,6 +7,7 @@ use App\Http\Requests\Purchase\UpdateRequest;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
+use Carbon\Carbon;
 
 class PurchaseController extends Controller
 {
@@ -34,7 +35,14 @@ class PurchaseController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        $data = $request->all();
+        $data['user_id'] = 2;
+        $data['purchase_date'] = Carbon::now('America/Lima');
+
+        dd($data);
+        
         $purchase = Purchase::create($request->all());
+        
 
         foreach ($request->product_id as $key => $product) {
             $results = [
