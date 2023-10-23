@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('tax');
             $table->decimal('total');
             $table->enum('status',['VALID','CANCELED'])->default('VALID');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             
             $table->foreign('provider_id')->references('id')->on('providers');
             $table->foreign('user_id')->references('id')->on('users');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
+use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
 
@@ -23,8 +24,9 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        $providers = Provider::get();
-        return view('admin.purchase.create', compact('providers'));
+        $providers = Provider::get();        
+        $products = Product::get();
+        return view('admin.purchase.create', compact('providers','products'));
     }
 
     /**
@@ -60,7 +62,7 @@ class PurchaseController extends Controller
     public function edit(Purchase $purchase)
     {
         $providers = Provider::get();
-        return view('admin.purchase.edit', compact('purchase', 'providers'));
+        return view('admin.purchase.edit', compact('purchase', 'providers',));
     }
 
     /**
