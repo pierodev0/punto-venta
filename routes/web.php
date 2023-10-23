@@ -19,19 +19,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('categories',CategoryController::class);
-Route::resource('providers',ProviderController::class);
-Route::resource('products',ProductController::class);
-Route::resource('clients',ClientController::class);
-Route::resource('purchases',PurchaseController::class);
-Route::resource('sales',SaleController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('categories', CategoryController::class);
+    Route::resource('providers', ProviderController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('purchases', PurchaseController::class);
+    Route::resource('sales', SaleController::class);
+});
 
 Route::get('/home', function () {
     return view('prueba');
 })->name('home');
+
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified']);
+
+Route::get('/', function () {
+   return view('welcome');
+});
 
 
 
 Route::get('logout',function(){
 
 })->name('logout');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
