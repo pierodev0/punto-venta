@@ -20,7 +20,7 @@ class ClientFactory extends Factory
 
         return [
             'name' => $faker->name,
-            'dni' => $faker->unique()->numerify('#######'), // Genera un número de 8 dígitos
+            'dni' => $faker->unique()->numerify('########'), // Genera un número de 8 dígitos
             'ruc' => $faker->unique()->numerify('###########'), // Genera un número de 11 dígitos
             'address' => $faker->address, // Puede generar o no una dirección
             'phone' => $faker->unique()->numerify('9########'), // Genera un número de 9 dígitos
