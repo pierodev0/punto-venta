@@ -51,7 +51,7 @@
                                             <th scope="row">{{ $product->id }}</th>
                                             <td>
                                                 {{-- <a target="_blank" title="Vista previa" href="{{route('web.product_details',$product)}}">{{$product->name}}</a> --}}
-                                                {{ $product->name }}
+                                                <a href="{{ route('products.show',$product) }}">{{ $product->name }}</a>
                                             </td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->sell_price }}</td>
