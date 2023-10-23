@@ -24,7 +24,7 @@
 
 <div class="form-group">
   <label for="code">Código de barras</label>
-  <input type="text" name="code" id="code" class="form-control" placeholder="" aria-describedby="helpId">
+  {{-- <input type="text" name="code" id="code" class="form-control" placeholder="" aria-describedby="helpId"> --}}
 </div>
 
 <div class="form-row">
@@ -43,7 +43,7 @@
   <div class="form-group col-md-4">
       <div class="form-group">
           <label for="quantity">Cantidad</label>
-          <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
+          <input type="number" class="form-control" name="quantity" id="quantity" max="20" aria-describedby="helpId">
       </div>
   </div>
   <div class="form-group col-md-2">

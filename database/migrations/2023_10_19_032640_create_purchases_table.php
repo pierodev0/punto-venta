@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->datetime('purchase_date');
             $table->decimal('tax');
-            $table->decimal('total');
+            $table->decimal('total',12, 2);
             $table->enum('status',['VALID','CANCELED'])->default('VALID');
             $table->string('picture')->nullable();
             

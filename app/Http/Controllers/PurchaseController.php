@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -35,21 +36,24 @@ class PurchaseController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data = $request->all();
-        $data['user_id'] = 2;
-        $data['purchase_date'] = Carbon::now('America/Lima');
-
-        dd($data);
+        // $data = $request->all();
+        // $data['user_id'] = Auth::user()->id;
+        // $data['purchase_date'] = Carbon::now('America/Lima');
         
-        $purchase = Purchase::create($request->all());
+       
+        $purchase = Purchase::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'purchase_date'=>Carbon::now('America/Lima'),
+        ]);
         
 
         foreach ($request->product_id as $key => $product) {
-            $results = [
+            $results[] = [
                 "product_id" => $request->product_id[$key],
                 "quantity" => $request->quantity[$key],
                 "price" => $request->price[$key],
             ];
+            // $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price"=>$request->price[$key]);
         }
         $purchase->purchaseDetails()->createMany($results);
 
