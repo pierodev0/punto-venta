@@ -109,4 +109,15 @@ class SaleController extends Controller
         $pdf = Pdf::loadView('admin.sale.pdf',  compact('sale','saleDetails','subtotal'));
         return $pdf->download('reporte-venta-'.$sale->id.'.pdf');
     }
+
+    public function change_status(Sale $sale)
+    {
+        if ($sale->status == 'VALID') {
+            $sale->update(['status'=>'CANCELED']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } else {
+            $sale->update(['status'=>'VALID']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } 
+    }
 }

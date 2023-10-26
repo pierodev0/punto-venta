@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Purchase\StoreRequest;
-use App\Http\Requests\Purchase\UpdateRequest;
+use Carbon\Carbon;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Purchase\StoreRequest;
+use App\Http\Requests\Purchase\UpdateRequest;
 
 class PurchaseController extends Controller
 {
@@ -115,5 +116,22 @@ class PurchaseController extends Controller
 
         $pdf = Pdf::loadView('admin.purchase.pdf',  compact('purchase','purchaseDetails','subtotal'));
         return $pdf->download('reporte-compra-'.$purchase->id.'.pdf');
+    }
+
+    public function upload(Request $request, Purchase $purchase)
+    {
+        // $purchase->update($request->all());
+        // return redirect()->route('purchases.index');
+    }
+
+    public function change_status(Purchase $purchase)
+    {
+        if ($purchase->status == 'VALID') {
+            $purchase->update(['status'=>'CANCELED']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } else {
+            $purchase->update(['status'=>'VALID']);
+            return redirect()->back()->with('toast_success', '¡Estado cambiado con éxito!');
+        } 
     }
 }
