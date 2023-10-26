@@ -109,6 +109,5 @@
 </div>
 @endsection
 @section('scripts')
-{{-- {!! Html::script('melody/js/profile-demo.js') !!} --}}
 <script src="{{ asset('melody/js/profile-demo.js') }}"></script>
 @endsection

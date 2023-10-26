@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Sale;
+use App\Models\Client;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
-use App\Models\Client;
-use App\Models\Sale;
 
 class SaleController extends Controller
 {
@@ -24,7 +27,8 @@ class SaleController extends Controller
     public function create()
     {
         $clients = Client::get();
-        return view('admin.sale.create', compact('clients'));
+        $products = Product::get();
+        return view('admin.sale.create', compact('clients','products'));
     }
 
     /**
@@ -32,10 +36,14 @@ class SaleController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $sale = Sale::create($request->all());
+        $sale = Sale::create($request->all()+
+            [ 
+            'user_id'=>Auth::user()->id,
+            'sale_date'=>Carbon::now('America/Lima')
+            ]);
 
         foreach ($request->product_id as $key => $product) {
-            $results = [
+            $results[] = [
                 "product_id" => $request->product_id[$key],
                 "quantity" => $request->quantity[$key],
                 "price" => $request->price[$key],
