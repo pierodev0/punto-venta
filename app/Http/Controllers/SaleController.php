@@ -104,8 +104,7 @@ class SaleController extends Controller
         foreach($saleDetails as $saleDetail){
             $subtotal += $saleDetail->quantity * $saleDetail->price;
         }
-        
-      
+              
 
         $pdf = Pdf::loadView('admin.sale.pdf',  compact('sale','saleDetails','subtotal'));
         return $pdf->download('reporte-venta-'.$sale->id.'.pdf');

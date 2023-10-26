@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
@@ -25,13 +26,28 @@ Route::middleware('auth')->group(function () {
     Route::resource('providers', ProviderController::class);
     Route::resource('products', ProductController::class);
     Route::resource('clients', ClientController::class);
-    Route::resource('purchases', PurchaseController::class);
-    Route::resource('sales', SaleController::class);
     Route::resource('users', UserController::class);
+
+    Route::resource('purchases', PurchaseController::class)->names('purchases')->except([
+        'edit', 'update', 'destroy'
+    ]);
+
+     Route::resource('sales', SaleController::class)->names('sales')->except([
+        'edit', 'update', 'destroy'
+    ]);
 
 
     Route::get('purchases/pdf/{purchase}', [PurchaseController::class,'pdf'])->name('purchases.pdf');
     Route::get('sales/pdf/{sale}', [SaleController::class,'pdf'])->name('sales.pdf');
+    
+    Route::resource('business', BusinessController::class)->names('business')->only([
+        'index', 'update'
+    ]);
+    Route::resource('printers', PrinterController::class)->names('printers')->only([
+        'index', 'update'
+    ]);
+    
+
 });
 
 Route::get('/home', function () {
