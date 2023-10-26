@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('purchases', PurchaseController::class);
     Route::resource('sales', SaleController::class);
     Route::resource('users', UserController::class);
+
+
+    Route::get('purchases/pdf/{purchase}', [PurchaseController::class,'pdf'])->name('purchases.pdf');
 });
 
 Route::get('/home', function () {
