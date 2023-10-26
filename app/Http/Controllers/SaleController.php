@@ -60,7 +60,12 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        return view('admin.sale.show', compact('sale'));
+        $subtotal = 0 ;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $saleDetail) {
+            $subtotal += $saleDetail->quantity*$saleDetail->price-$saleDetail->quantity* $saleDetail->price*$saleDetail->discount/100;
+        }
+        return view('admin.sale.show', compact('sale', 'saleDetails', 'subtotal'));
     }
 
     /**
