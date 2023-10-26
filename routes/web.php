@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +53,10 @@ Route::middleware('auth')->group(function () {
     Route::get('change_status/products/{product}', [ProductController::class, 'change_status'])->name('change.status.products');
     Route::get('change_status/purchases/{purchase}', [PurchaseController::class, 'change_status'])->name('change.status.purchases');
     Route::get('change_status/sales/{sale}', [SaleController::class, 'change_status'])->name('change.status.sales');
-    
+
+    Route::get('reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
+    Route::get('reports_date', [ReportController::class , 'reports_date'])->name('reports.date');
+    Route::post('sales/report_results', [ReportController::class, 'report_results'])->name('report.results');
 
 });
 
