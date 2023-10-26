@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('purchases/pdf/{purchase}', [PurchaseController::class,'pdf'])->name('purchases.pdf');
+    Route::get('sales/pdf/{sale}', [SaleController::class,'pdf'])->name('sales.pdf');
 });
 
 Route::get('/home', function () {

@@ -64,7 +64,7 @@
 
                                     <td style="width: 20%;">
 
-                                        <a href="" class="btn btn-outline-danger"
+                                        <a href="{{route('sales.pdf',$sale)}}" class="btn btn-outline-danger"
                                         title="Generar PDF"><i class="far fa-file-pdf"></i></a>
                                         <a href="" class="btn btn-outline-warning"
                                         title="Imprimir boleta"><i class="fas fa-print"></i></a>

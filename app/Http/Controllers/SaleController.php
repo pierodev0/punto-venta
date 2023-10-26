@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SaleController extends Controller
 {
@@ -93,5 +94,20 @@ class SaleController extends Controller
     {
         // $sale->delete();
         // return redirect()->route('sales.index');
+    }
+
+    public function pdf(Sale $sale)
+    {
+        $subtotal = 0;
+        
+        $saleDetails = $sale->saleDetails;
+        foreach($saleDetails as $saleDetail){
+            $subtotal += $saleDetail->quantity * $saleDetail->price;
+        }
+        
+      
+
+        $pdf = Pdf::loadView('admin.sale.pdf',  compact('sale','saleDetails','subtotal'));
+        return $pdf->download('reporte-venta-'.$sale->id.'.pdf');
     }
 }
