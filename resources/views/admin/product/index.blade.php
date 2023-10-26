@@ -55,14 +55,19 @@
                                             </td>
                                             <td>{{ $product->stock }}</td>
                                             <td>{{ $product->sell_price }}</td>
-                                            <td class="second_td">
-                                                <a href="#" id="username" class="editable" data-type="select"
-                                                    data-pk="{{ $product->id }}"
-                                                    data-url="{{ url("/update_product_status/$product->id") }}"
-                                                    data-title="Estado" data-value="{{ $product->status }}">
-                                                    {{ $product->status }}
-                                                </a>
-                                            </td>
+                                            @if ($product->status == 'ACTIVE')
+                                                <td>
+                                                    <a class="jsgrid-button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
+                                                        Activo <i class="fas fa-check"></i>
+                                                    </a>
+                                                </td>
+                                                @else
+                                                <td>
+                                                    <a class="jsgrid-button btn btn-danger" href="{{route('change.status.products', $product)}}" title="Editar">
+                                                        Desactivado <i class="fas fa-times"></i>
+                                                    </a>
+                                                </td>
+                                                @endif
 
                                             <td>
                                                 {{ isset($product->category->name) ? $product->category->name : '' }}
