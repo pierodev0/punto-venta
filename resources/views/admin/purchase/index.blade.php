@@ -60,13 +60,13 @@
 
                                     @if ($purchase->status == 'VALID')
                                     <td>
-                                        <a class="jsgrid-button btn btn-success" href="" title="Editar">
+                                        <a class="jsgrid-button btn btn-success" href="{{ route('change.status.purchases',$purchase) }}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="jsgrid-button btn btn-danger" href="" title="Editar">
+                                        <a class="jsgrid-button btn btn-danger" href="{{ route('change.status.purchases',$purchase) }}" title="Editar">
                                             Cancelado <i class="fas fa-times"></i>
                                         </a>
                                     </td>
